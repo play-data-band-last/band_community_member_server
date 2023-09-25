@@ -19,7 +19,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
-    show-sql: true
+    show-sql: false
   application:
     name: BAND-COMMUNITY-MEMBER-SERVICE
 
