@@ -14,11 +14,9 @@ import java.util.List;
 public class CommunityMemberService {
     private final CommunityMemberRepository communityMemberRepository;
 
-    public void saveCommunityMember(
-            CommunityMemberReqeust communityMemberReqeust,
-            Long communityId)
-    {
-        communityMemberRepository.save(communityMemberReqeust.toEntity(communityId));
+    public void saveCommunityMember(CommunityMemberReqeust communityMemberReqeust) {
+
+        communityMemberRepository.save(communityMemberReqeust.toEntity());
     }
 
 
@@ -39,8 +37,8 @@ public class CommunityMemberService {
 
     @Transactional
     //멤버가 업데이트 되면 중계테이블도 업데이트 되어야함
-    public void updateMemberInCommunityMember(CommunityMemberReqeust communityMemberReqeust,Long memberId){
-        communityMemberRepository.updateMemberInCommunityMember(communityMemberReqeust, memberId);
+    public void updateMemberInCommunityMember(CommunityMemberReqeust communityMemberReqeust){
+        communityMemberRepository.updateMemberInCommunityMember(communityMemberReqeust, communityMemberReqeust.getMemberId());
     };
 
 

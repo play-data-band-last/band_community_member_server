@@ -19,8 +19,9 @@ public class CommunityMemberController {
     @PostMapping("/{communityId}")
     public void saveCommunityMember(@PathVariable("communityId") Long communityId,
                                     @RequestBody CommunityMemberReqeust communityMemberReqeust){
-        System.out.println(communityMemberReqeust.getCommunityImage());
-        communityMemberService.saveCommunityMember(communityMemberReqeust,communityId);
+        communityMemberReqeust.setCommunityId(communityId);
+
+        communityMemberService.saveCommunityMember(communityMemberReqeust);
     }
 
     @GetMapping("/communityid/{communityId}")
@@ -45,7 +46,8 @@ public class CommunityMemberController {
     public void updateMemberInCommunityMember(
             @RequestBody CommunityMemberReqeust communityMemberReqeust,
             @PathVariable("memberId") Long memberId){
-        communityMemberService.updateMemberInCommunityMember(communityMemberReqeust,memberId);
+        communityMemberReqeust.setMemberId(memberId);
+        communityMemberService.updateMemberInCommunityMember(communityMemberReqeust);
     }
 
 

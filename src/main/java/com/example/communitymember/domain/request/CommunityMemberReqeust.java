@@ -17,10 +17,10 @@ public class CommunityMemberReqeust {
     private String memberImage;
     private String communityName;
     private String communityImage;
+    private Long communityId;
 
 
-    public CommunityMember toEntity(Long communityId){
-        System.out.println(communityId);
+    public CommunityMember toEntity(){
         return CommunityMember
                 .builder()
                 .memberId(memberId)
