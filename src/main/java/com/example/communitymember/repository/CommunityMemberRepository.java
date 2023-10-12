@@ -14,13 +14,15 @@ public interface CommunityMemberRepository extends CustomCommunityMemberReposito
     @Query("select c " +
             "from CommunityMember c " +
             "where c.isValid = True " +
-            "and  c.communityId = :communityId")
+            "and  c.communityId = :communityId " +
+            "and c.isValid = true ")
     List<CommunityMember> findAllByCommunityId(@Param("communityId") Long communityId);
 
     @Query("select c " +
             "from CommunityMember c " +
             "where c.isValid = True " +
-            "and  c.memberId = :memberId")
+            "and  c.memberId = :memberId " +
+            "and c.isValid = true ")
     List<CommunityMember> findAllByMemberId(@Param("memberId") Long memberId);
 
     Optional<CommunityMember> findByMemberId(Long userId);

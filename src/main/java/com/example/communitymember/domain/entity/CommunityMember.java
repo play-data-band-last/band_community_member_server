@@ -24,6 +24,7 @@ public class CommunityMember {
     private String memberRole;
     private String memberName;
     private String memberImage;
-    private Boolean isValid;
+    @Builder.Default
+    private Boolean isValid=Boolean.TRUE;
 
 }
