@@ -7,11 +7,23 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CommunityMemberRepository extends CustomCommunityMemberRepository, JpaRepository<CommunityMember, Long> {
-    List<CommunityMember> findAllByCommunityId(Long communityId);
 
-    List<CommunityMember> findAllByMemberId(Long memberId);
+    @Query("select c " +
+            "from CommunityMember c " +
+            "where c.isValid = True " +
+            "and  c.communityId = :communityId")
+    List<CommunityMember> findAllByCommunityId(@Param("communityId") Long communityId);
+
+    @Query("select c " +
+            "from CommunityMember c " +
+            "where c.isValid = True " +
+            "and  c.memberId = :memberId")
+    List<CommunityMember> findAllByMemberId(@Param("memberId") Long memberId);
+
+    Optional<CommunityMember> findByMemberId(Long userId);
 
     @Modifying
     @Query("DELETE from CommunityMember c " +

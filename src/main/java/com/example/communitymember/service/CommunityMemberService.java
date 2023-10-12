@@ -46,4 +46,10 @@ public class CommunityMemberService {
         communityMemberRepository.deleteByMemberIdAndCommunityId(memberId, communityId);
     }
 
+    @Transactional
+    public void memberDeleteHandler(Long userId){
+        CommunityMember communityMember = communityMemberRepository.findByMemberId(userId).get();
+        communityMember.setIsValid(Boolean.FALSE);
+    }
+
 }

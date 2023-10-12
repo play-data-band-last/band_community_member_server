@@ -34,6 +34,13 @@ public class CommunityMemberConsumer {
         communityMemberService.updateMemberInCommunityMember(communityMemberReqeust);
     }
 
+    @RetryableTopic
+    @KafkaListener(topics = TopicConfig.memberDelete)
+    public void memberDeleteListner(Long userID) {
+        communityMemberService.memberDeleteHandler(userID);
+
+    }
+
     @DltHandler
     public void processDltMessage(String dltMessage) {
         // DLT 토픽에서 메시지를 처리합니다. (예: 로깅 또는 추가 조사)
