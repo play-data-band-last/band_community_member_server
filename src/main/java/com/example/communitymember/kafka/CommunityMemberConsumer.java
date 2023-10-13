@@ -36,10 +36,10 @@ public class CommunityMemberConsumer {
 
     @RetryableTopic
     @KafkaListener(topics = TopicConfig.memberDelete)
-    public void memberDeleteListner(Long userID) {
-        communityMemberService.memberDeleteHandler(userID);
-
+    public void memberDeleteListener(CommunityMemberReqeust communityMemberReqeust) {
+        communityMemberService.memberDeleteHandler(communityMemberReqeust.getMemberId());
     }
+
 
     @DltHandler
     public void processDltMessage(String dltMessage) {
