@@ -16,11 +16,11 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class CommunityMemberConsumer {
     private final CommunityMemberService communityMemberService;
+
+    // 커뮤니티 생성 시 .. 본인을 커뮤니티 멤버의 모임장으로 등록
     @KafkaListener(topics = TopicConfig.communityMember)
     public void listen(CommunityMemberReqeust communityMemberReqeust) {
         System.out.println("consumer : " + communityMemberReqeust);
-//        throw new IllegalArgumentException("test");
-
         communityMemberService.saveCommunityMember(communityMemberReqeust);
     }
 

@@ -1,6 +1,6 @@
 spring:
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: localhost:9093
     consumer:
       auto-offset-reset: latest
       group-id: communityMember
@@ -18,14 +18,20 @@ spring:
     password: 1234
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: false
   application:
     name: BAND-COMMUNITY-MEMBER-SERVICE
+  data:
+    redis:
+      host: localhost
+      port: 6380
+
 
 
 server:
   port: 0
+
 
 management:
   endpoints:
@@ -37,7 +43,6 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
-
   instance:
     instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
 

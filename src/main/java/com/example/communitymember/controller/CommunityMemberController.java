@@ -5,6 +5,11 @@ import com.example.communitymember.domain.entity.CommunityMember;
 import com.example.communitymember.domain.request.CommunityMemberReqeust;
 import com.example.communitymember.service.CommunityMemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -59,4 +64,14 @@ public class CommunityMemberController {
         communityMemberService.deleteCommunityMember(memberId,communityId);
     }
 
+    @GetMapping("/redisGet/{communityId}")
+    public List<Long> findByCommunityIdFromRedis(@PathVariable String communityId) {
+        return communityMemberService.findByCommunityIdFromRedis(communityId);
+    }
+
+    @DeleteMapping("/redisDel/{communityId}")
+    public void deleteCommunity(@PathVariable String communityId) {
+
+        communityMemberService.deleteCommunity(communityId);
+    }
 }
