@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class TopicConfig {
     public final static String communityMember = "communityMember";
-    public final static String communityNotify0 = "communityNotify0";
+    public final static String communityNotify = "communityNotify";
     public final static String communityNotify1 = "communityNotify1";
     public final static String communityNotify2 = "communityNotify2";
     public final static String communityMemberUpdate = "communityMemberUpdate";
@@ -20,7 +20,7 @@ public class TopicConfig {
 
     @Bean
     public NewTopic topicNotify0() {
-        return new NewTopic(communityNotify0, 1, (short) 1);
+        return new NewTopic(communityNotify, 1, (short) 1);
     }
 
     @Bean

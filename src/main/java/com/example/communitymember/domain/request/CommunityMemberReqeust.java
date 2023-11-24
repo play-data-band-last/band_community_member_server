@@ -18,6 +18,7 @@ public class CommunityMemberReqeust {
     private String communityName;
     private String communityImage;
     private Long communityId;
+    private Long ownerId;
 
 
     public CommunityMember toEntity(){
@@ -30,6 +31,7 @@ public class CommunityMemberReqeust {
                 .memberName(memberName)
                 .communityImage(communityImage)
                 .communityName(communityName)
+                .ownerId(ownerId)
                 .build();
     }
 

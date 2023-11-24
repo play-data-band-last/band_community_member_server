@@ -42,13 +42,20 @@ public class NotifyProducer {
                 .communityName(communitySearchRequest.getCommunityName())
                 .currTime(LocalDateTime.now())
                 .flag(1)
+                .ownerId(communitySearchRequest.getOwnerId())
                 .build();
 
 
-        CompletableFuture<SendResult<String, NotifyRequest>> resultCompletableFuture = kafkaTemplate.send(TopicConfig.communityNotify0, notifyRequest);
+
+        CompletableFuture<SendResult<String, NotifyRequest>> resultCompletableFuture = kafkaTemplate.send(TopicConfig.communityNotify, notifyRequest);
 
         resultCompletableFuture.thenAccept(result -> {
-            System.out.println("send After " + communitySearchRequest.getCommunityId() + " " + "offset : " + result.getRecordMetadata().offset());
+
+            System.out.println("notify 전송 getCommunityId : " + communitySearchRequest.getCommunityId());
+            System.out.println("notify 전송 getOwnerId : " + communitySearchRequest.getOwnerId());
+            System.out.println("notify 전송 localData : " + LocalDateTime.now());
+            System.out.println("offset : " + result.getRecordMetadata().offset());
+
         });
 
 

@@ -20,7 +20,9 @@ public class CommunityMemberConsumer {
     // 커뮤니티 생성 시 .. 본인을 커뮤니티 멤버의 모임장으로 등록
     @KafkaListener(topics = TopicConfig.communityMember)
     public void listen(CommunityMemberReqeust communityMemberReqeust) {
-        System.out.println("consumer : " + communityMemberReqeust);
+        System.out.println("consumer CommunityId: " + communityMemberReqeust.getCommunityId());
+        System.out.println("consumer OwnerId: " + communityMemberReqeust.getOwnerId());
+        System.out.println("consumer MemberId: " + communityMemberReqeust.getMemberId());
         communityMemberService.saveCommunityMember(communityMemberReqeust);
     }
 

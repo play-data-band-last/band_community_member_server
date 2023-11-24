@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 public class NotifyRequest {
     private long communityId;
     private long memberId;
+    private long ownerId;
     private String memberName;
     private String communityName;
     private String memberProfileImg;

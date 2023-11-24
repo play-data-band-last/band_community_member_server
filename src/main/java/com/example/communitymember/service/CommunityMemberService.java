@@ -24,8 +24,8 @@ public class CommunityMemberService {
     private final NotifyProducer notifyProducer;
     private final RedisTemplate<String, Object> redisTemplate;
     public void saveCommunityMember(CommunityMemberReqeust communityMemberReqeust) {
+        System.out.println("커뮤니티 가입 : " + communityMemberReqeust.getOwnerId());
 
-        System.out.println(communityMemberReqeust.getMemberRole());
         // 분산트랜잭션이 필요함..
         try {
             communityMemberRepository.save(communityMemberReqeust.toEntity());

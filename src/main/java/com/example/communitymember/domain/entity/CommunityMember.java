@@ -19,6 +19,7 @@ public class CommunityMember {
     private Long id;
     private Long communityId;
     private Long memberId;
+    private Long ownerId;
     private String communityName;
     private String communityImage;
     private String memberRole;
